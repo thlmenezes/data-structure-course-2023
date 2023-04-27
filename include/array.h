@@ -9,7 +9,6 @@
 	} Array;
 	
 	Array* create_array(int);
-	// TODO1: implement the methods below
 	int length(Array*);
 	void free_array(Array*);
 #endif

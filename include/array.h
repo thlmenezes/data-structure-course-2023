@@ -8,7 +8,7 @@
 		int* data;
 	} Array;
 	
-	Array* create_array(int);
-	int length(Array*);
-	void free_array(Array*);
+	Array* array_create(int);
+	int array_length(Array*);
+	void array_free(Array*);
 #endif

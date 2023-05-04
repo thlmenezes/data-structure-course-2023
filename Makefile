@@ -38,6 +38,7 @@ docs:
 
 test: $(tobjects) $(filter-out obj/main.o, $(objects))
 	$(LINK.o) $^ -o $@
+	./test
 
 tests/%.o: tests/%.c
 	$(COMPILE.c) -I $(INC_DIR) $(OUTPUT_OPTION) $<

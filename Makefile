@@ -33,6 +33,9 @@ CFLAGS   := -g -Wall -pedantic
 main: $(objects)
 	$(LINK.o) $^ -o $@
 
+docs:
+	@doxygen Doxyfile
+
 test: $(tobjects) $(filter-out obj/main.o, $(objects))
 	$(LINK.o) $^ -o $@
 

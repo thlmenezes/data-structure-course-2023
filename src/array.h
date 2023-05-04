@@ -7,7 +7,9 @@
 		int size;
 		int* data;
 	} Array;
-	
+	/**
+	 * Instantiates a new dynamic allocated array
+	 */	
 	Array* array_create(int);
 	int array_length(Array*);
 	Array* array_clone(Array*);

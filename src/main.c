@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include "array.h"
 
+/**
+ * This is the main function
+ * 
+ */
 int main(){
   Array* list = array_create(5);
   printf("%d\n", array_length(list));

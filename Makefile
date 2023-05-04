@@ -17,12 +17,15 @@
 #  '$^' used to insert all the rule' dependencies in the command
 ##################################################################
 SRC_DIR := src
-INC_DIR := include
+INC_DIR := src
 sources := $(wildcard $(SRC_DIR)/*.c)
 headers := $(wildcard $(INC_PATH)/*.h)
 objects := $(sources:$(SRC_DIR)/%.c=obj/%.o)
 deps    := $(objects:.o=.d)
-files   := $(objects) $(deps) main
+files   := $(objects) $(deps) main test tests/main.o
+
+tfiles := $(wildcard tests/*.c)
+tobjects := $(tfiles:.c=.o)
 
 CC       := gcc
 CFLAGS   := -g -Wall -pedantic
@@ -30,6 +33,11 @@ CFLAGS   := -g -Wall -pedantic
 main: $(objects)
 	$(LINK.o) $^ -o $@
 
+test: $(tobjects) $(filter-out obj/main.o, $(objects))
+	$(LINK.o) $^ -o $@
+
+tests/%.o: tests/%.c
+	$(COMPILE.c) -I $(INC_DIR) $(OUTPUT_OPTION) $<
 ##################################################################
 ###########Building Rules
 #  Used when compiling an object for COMPILE

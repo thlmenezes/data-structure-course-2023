@@ -18,6 +18,7 @@ void list_clear(List *);
 int list_is_empty(List *);
 void list_emplace_element(List *, int, int);
 void list_remove_element(List *, int);
+int list_get_element(List *, int);
 void list_free(List *);
 // TODO1: implement string repr of array for printf
 // char *list_to_s(List *);

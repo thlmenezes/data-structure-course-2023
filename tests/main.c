@@ -37,6 +37,18 @@ int check_list_emplace_twice_on_list(void) {
   return 0;
 }
 
+int check_list_get_element(void) {
+  List *list = list_create();
+  assert(list_get_element(list, 10) == -1);
+  list_emplace_element(list, 10, 1);
+  assert(list_get_element(list, 0) == 10);
+  list_emplace_element(list, 20, 1);
+  assert(list_get_element(list, 0) == 10);
+  assert(list_get_element(list, 1) == 20);
+  list_free(list);
+  return 0;
+}
+
 int check_list_clear_on_empty_list(void) {
   List *list = list_create();
   list_clear(list);
@@ -60,5 +72,6 @@ int main(void) {
   check_list_emplace_twice_on_list();
   check_list_clear_on_empty_list();
   check_list_clear_on_unitary_list();
+  check_list_get_element();
   return 0;
 }

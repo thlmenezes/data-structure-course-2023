@@ -7,6 +7,17 @@ List *list_create() {
   return list;
 }
 
+int list_get_element(List *list, int position) {
+  Node *target = list->head;
+  for (; target != NULL && position > 0; position--) {
+    target = target->next;
+  }
+  if (target != NULL) {
+    return target->data;
+  }
+  return -1;
+}
+
 void list_emplace_element(List *list, int data, int position) {
   Node *target = list->head;
   for (; target != NULL && target->next != NULL && position > 1; position--) {

@@ -18,8 +18,17 @@ int check_list_create(void) {
   return 0;
 }
 
+int check_list_emplace_on_empty_list(void) {
+  List *list = list_create();
+  list_emplace_element(list, 10, 1);
+  assert(list->head->data == 10);
+  list_free(list);
+  return 0;
+}
+
 int main(void) {
   check_array_length();
   check_list_create();
+  check_list_emplace_on_empty_list();
   return 0;
 }

@@ -7,4 +7,10 @@ List *list_create() {
   return list;
 }
 
-void list_free(List *list) {}
+void list_emplace_element(List *list, int data, int position) {
+  Node *node = malloc(sizeof(Node));
+  node->data = data;
+  list->head = node;
+}
+
+void list_free(List *list) { free(list); }

@@ -7,6 +7,15 @@ List *list_create() {
   return list;
 }
 
+int list_length_node(Node *node) {
+  if (node == NULL) {
+    return 0;
+  }
+  return 1 + list_length_node(node->next);
+}
+
+int list_length(List *list) { return list_length_node(list->head); }
+
 int list_is_empty(List *list) { return list->head == NULL; }
 
 int list_get_element(List *list, int position) {

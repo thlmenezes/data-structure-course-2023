@@ -18,6 +18,21 @@ int check_list_create(void) {
   return 0;
 }
 
+int check_list_length(void) {
+  List *list = list_create();
+  assert(list_length(list) == 0);
+  list_emplace_element(list, 10, 1);
+  assert(list_length(list) == 1);
+  list_emplace_element(list, 10, 1);
+  list_emplace_element(list, 10, 1);
+  list_emplace_element(list, 10, 1);
+  list_emplace_element(list, 10, 1);
+  list_emplace_element(list, 10, 1);
+  assert(list_length(list) == 6);
+  list_free(list);
+  return 0;
+}
+
 int check_list_emplace_on_empty_list(void) {
   List *list = list_create();
   list_emplace_element(list, 10, 1);
@@ -77,6 +92,7 @@ int check_list_is_empty(void) {
 int main(void) {
   check_array_length();
   check_list_create();
+  check_list_length();
   check_list_emplace_on_empty_list();
   check_list_emplace_twice_on_list();
   check_list_clear_on_empty_list();

@@ -45,6 +45,22 @@ void list_emplace_element(List *list, int data, int position) {
   }
 }
 
+int list_pop_element(List *list, int position) {
+  Node *target = list->head;
+  for (; target != NULL && target->next != NULL && position > 1; position--) {
+    target = target->next;
+  }
+  Node *remove = target->next;
+  target->next = remove->next;
+  int data = remove->data;
+  free(remove);
+  return data;
+}
+
+void list_remove_element(List *list, int position) {
+  list_pop_element(list, position);
+}
+
 void list_clear_node(Node *node) {
   if (node == NULL) {
     return;

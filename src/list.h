@@ -17,6 +17,7 @@ int list_length(List *);
 void list_clear(List *);
 int list_is_empty(List *);
 void list_emplace_element(List *, int, int);
+int list_pop_element(List *list, int position);
 void list_remove_element(List *, int);
 int list_get_element(List *, int);
 void list_free(List *);

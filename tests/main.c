@@ -89,6 +89,36 @@ int check_list_is_empty(void) {
   return 0;
 }
 
+int check_list_remove_element(void) {
+  List *list = list_create();        // []
+  list_emplace_element(list, 10, 1); // [10]
+  list_emplace_element(list, 20, 1); // [10, 20]
+  list_emplace_element(list, 30, 1); // [10, 30, 20]
+  list_emplace_element(list, 40, 1); // [10, 40, 30, 20]
+  list_emplace_element(list, 50, 1); // [10, 50, 40, 30, 20]
+  list_emplace_element(list, 42, 1); // [10, 42, 50, 40, 30, 20]
+  assert(list_length(list) == 6);
+  list_remove_element(list, 1); // [10, 50, 40, 30, 20]
+  assert(list_length(list) == 5);
+  assert(list_get_element(list, 1) == 50);
+  list_free(list);
+  return 0;
+}
+
+int check_list_pop_element(void) {
+  List *list = list_create();        // []
+  list_emplace_element(list, 10, 1); // [10]
+  list_emplace_element(list, 20, 1); // [10, 20]
+  list_emplace_element(list, 30, 1); // [10, 30, 20]
+  list_emplace_element(list, 40, 1); // [10, 40, 30, 20]
+  list_emplace_element(list, 50, 1); // [10, 50, 40, 30, 20]
+  list_emplace_element(list, 42, 1); // [10, 42, 50, 40, 30, 20]
+  assert(list_pop_element(list, 1) == 42);
+  assert(list_pop_element(list, 4) == 20);
+  list_free(list);
+  return 0;
+}
+
 int main(void) {
   check_array_length();
   check_list_create();
@@ -99,5 +129,7 @@ int main(void) {
   check_list_clear_on_unitary_list();
   check_list_get_element();
   check_list_is_empty();
+  check_list_remove_element();
+  check_list_pop_element();
   return 0;
 }

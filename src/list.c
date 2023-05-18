@@ -8,10 +8,19 @@ List *list_create() {
 }
 
 void list_emplace_element(List *list, int data, int position) {
+  Node *target = list->head;
+  for (; target != NULL && target->next != NULL && position > 1; position--) {
+    target = target->next;
+  }
   Node *node = malloc(sizeof(Node));
   node->data = data;
-  node->next = NULL;
-  list->head = node;
+  if (target != NULL) {
+    node->next = target->next;
+    target->next = node;
+  } else {
+    node->next = NULL;
+    list->head = node;
+  }
 }
 
 void list_clear_node(Node *node) {

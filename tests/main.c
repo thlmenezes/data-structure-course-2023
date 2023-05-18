@@ -1,5 +1,6 @@
 #include "../src/array.h"
 #include "../src/list.h"
+#include "../src/stack.h"
 #include <assert.h>
 #include <stdlib.h>
 
@@ -119,6 +120,21 @@ int check_list_pop_element(void) {
   return 0;
 }
 
+int check_stack(void) {
+  Stack *stack = stack_create();
+  stack_push(stack, 1); // [1]
+  stack_push(stack, 2); // [2,1]
+  stack_push(stack, 3); // [3,2,1]
+  stack_push(stack, 4); // [4,3,2,1]
+  assert(stack_top(stack) == 4);
+  assert(stack_pop(stack) == 4);
+  assert(stack_pop(stack) == 3);
+  assert(stack_pop(stack) == 2);
+  assert(stack_pop(stack) == 1);
+  stack_free(stack);
+  return 0;
+}
+
 int main(void) {
   check_array_length();
   check_list_create();
@@ -131,5 +147,6 @@ int main(void) {
   check_list_is_empty();
   check_list_remove_element();
   check_list_pop_element();
+  check_stack();
   return 0;
 }

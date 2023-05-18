@@ -7,6 +7,8 @@ List *list_create() {
   return list;
 }
 
+int list_is_empty(List *list) { return list->head == NULL; }
+
 int list_get_element(List *list, int position) {
   Node *target = list->head;
   for (; target != NULL && position > 0; position--) {

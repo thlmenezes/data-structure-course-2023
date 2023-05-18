@@ -65,6 +65,15 @@ int check_list_clear_on_unitary_list(void) {
   return 0;
 }
 
+int check_list_is_empty(void) {
+  List *list = list_create();
+  assert(list_is_empty(list));
+  list_emplace_element(list, 10, 1);
+  assert(!list_is_empty(list));
+  list_free(list);
+  return 0;
+}
+
 int main(void) {
   check_array_length();
   check_list_create();
@@ -73,5 +82,6 @@ int main(void) {
   check_list_clear_on_empty_list();
   check_list_clear_on_unitary_list();
   check_list_get_element();
+  check_list_is_empty();
   return 0;
 }

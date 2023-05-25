@@ -53,8 +53,14 @@ int list_pop_element(List *list, int position) {
   for (; target != NULL && target->next != NULL && position > 1; position--) {
     target = target->next;
   }
-  Node *remove = target->next;
-  target->next = remove->next;
+  Node *remove;
+  if (position == 0) {
+    remove = target;
+    list->head = remove->next;
+  } else {
+    remove = target->next;
+    target->next = remove->next;
+  }
   int data = remove->data;
   free(remove);
   return data;

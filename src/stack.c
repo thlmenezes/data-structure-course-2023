@@ -1,5 +1,4 @@
 #include "stack.h"
-#include "list.h"
 
 Stack *stack_create() { return list_create(); }
 int stack_length(Stack *stack) { return list_length(stack); }

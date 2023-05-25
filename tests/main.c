@@ -120,6 +120,15 @@ int check_list_pop_element(void) {
   return 0;
 }
 
+int check_list_emplace_head(void) {
+  List *list = list_create();         // []
+  list_emplace_element(list, 100, 0); // [100]
+  list_emplace_element(list, 1, 0);   // [1, 100]
+  assert(list_get_element(list, 0) == 1);
+  list_free(list);
+  return 0;
+}
+
 int check_stack(void) {
   Stack *stack = stack_create();
   stack_push(stack, 1); // [1]
@@ -147,6 +156,7 @@ int main(void) {
   check_list_is_empty();
   check_list_remove_element();
   check_list_pop_element();
+  check_list_emplace_head();
   check_stack();
   return 0;
 }

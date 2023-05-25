@@ -1,5 +1,6 @@
 #include "../src/array.h"
 #include "../src/list.h"
+#include "../src/queue.h"
 #include "../src/stack.h"
 #include <assert.h>
 #include <stdlib.h>
@@ -144,6 +145,22 @@ int check_stack(void) {
   return 0;
 }
 
+int check_queue(void) {
+  Queue *queue = queue_create();
+  enqueue(queue, 1); // [1]
+  enqueue(queue, 2); // [2,1]
+  enqueue(queue, 3); // [3,2,1]
+  enqueue(queue, 4); // [4,3,2,1]
+  assert(queue_front(queue) == 1);
+  assert(queue_back(queue) == 4);
+  assert(dequeue(queue) == 1);
+  assert(dequeue(queue) == 2);
+  assert(dequeue(queue) == 3);
+  assert(dequeue(queue) == 4);
+  queue_free(queue);
+  return 0;
+}
+
 int main(void) {
   check_array_length();
   check_list_create();
@@ -158,5 +175,6 @@ int main(void) {
   check_list_pop_element();
   check_list_emplace_head();
   check_stack();
+  check_queue();
   return 0;
 }

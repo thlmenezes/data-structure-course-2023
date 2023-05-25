@@ -36,7 +36,10 @@ void list_emplace_element(List *list, int data, int position) {
   }
   Node *node = malloc(sizeof(Node));
   node->data = data;
-  if (target != NULL) {
+  if (target != NULL && position == 0) {
+    node->next = list->head;
+    list->head = node;
+  } else if (target != NULL) {
     node->next = target->next;
     target->next = node;
   } else {

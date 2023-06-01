@@ -87,3 +87,28 @@ void list_free(List *list) {
   list_clear(list);
   free(list);
 }
+
+char *list_to_s(List *list){
+  char[list_length(list) + 1] texto;
+  for (int i = 0; i < list_length(list); i++) {
+    texto[i] = node->data[i];
+  }
+  texto[list_length + 1] = '000/';
+  return texto;
+}
+
+List *list_clone(List *list){
+  int list_length = list_length(list);
+  List* list_clone = list_create();
+  for (i = 0 ;i < list_length;i++){
+    list_emplace_element(list, list{list_length}, i);
+  }
+  return list_clone;
+}
+
+void list_fill(List *list, int value){
+  int list_length = list_length(list);
+  for(int i = 0;  i < list_length;i++){
+    node->data[i] = value;
+  }
+}

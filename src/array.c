@@ -29,6 +29,11 @@ Array *array_clone(Array *array) {
   return new_array;
 }
 
-// char* array_to_s(Array* arr){
-//
-// }
+char* array_to_s(Array* arr){
+  char[arr->size + 1] texto;
+  for (int i = 0; i < arr->size; i++) {
+    texto[i] = arr->data[i];
+  }
+  texto[arr->size + 1] = '000/';
+  return texto;
+}

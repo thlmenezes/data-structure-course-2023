@@ -5,9 +5,30 @@
 #include <assert.h>
 #include <stdlib.h>
 
+int check_array_create(void) {
+  Array *list = list_create();
+  assert(Array != NULL);
+  assert(data == NULL);
+  array_free(list);
+  return 0;
+}
+
 int check_array_length(void) {
   Array *list = array_create(5);
   assert(array_length(list) == 5);
+  array_free(list);
+  return 0;
+}
+
+int  check_array_pop_element(void);{`
+  Array *array = array_create();        // []
+  assert(list_pop_element(list, 4) == 20);
+  array_free(list);
+  return 0;
+}
+
+int check_list_clear_on_empty_array(void) {
+  Array *list = array_create();
   array_free(list);
   return 0;
 }
@@ -127,7 +148,7 @@ int check_list_emplace_head(void) {
   list_emplace_element(list, 1, 0);   // [1, 100]
   assert(list_get_element(list, 0) == 1);
   list_free(list);
-  return 0;
+  return 0;fsas
 }
 
 int check_stack(void) {
@@ -144,6 +165,117 @@ int check_stack(void) {
   stack_free(stack);
   return 0;
 }
+
+/*
+int check_stack_length(void) {
+  Stack *stack = stack_create();
+  assert(stack_length(list) == 0);
+  stack_emplace_element(list, 10, 1);
+  assert(stack_length(list) == 1);
+  stack_emplace_element(list, 10, 1);
+  stack_emplace_element(list, 10, 1);
+  stack_emplace_element(list, 10, 1);
+  stack_emplace_element(list, 10, 1);
+  stack_emplace_element(list, 10, 1);
+  assert(stack_length(list) == 6);
+  stack_free(list);
+  return 0;
+}
+
+int check_stack_emplace_on_empty_stack(void) {
+  Stack *stack = stack_create();
+  stack_emplace_element(list, 10, 1);
+  assert(list->head->data == 10);
+  stack_free(stack);
+  return 0;
+}
+
+int check_stack_emplace_twice_on_stack(void) {
+  Stack *stack = stack_create();
+  stack_emplace_element(list, 10, 1);
+  assert(stack->head->data == 10);
+  Stack_emplace_element(list, 20, 1);
+  assert(list->head->data == 10);
+  assert(list->head->next->data == 20);
+  Stack_free(stack);
+  return 0;
+}
+
+int check_stack_get_element(void) {
+  Stack *stack = stack_create();
+  assert(stack_get_element(stack, 10) == -1);
+  list_emplace_element(list, 10, 1);
+  assert(list_get_element(list, 0) == 10);
+  list_emplace_element(list, 20, 1);
+  assert(list_get_element(list, 0) == 10);
+  assert(list_get_element(list, 1) == 20);
+  list_free(list);
+  return 0;
+}
+
+int check_list_clear_on_empty_list(void) {
+  List *list = list_create();
+  list_clear(list);
+  list_free(list);
+  return 0;
+}
+
+int check_list_clear_on_unitary_list(void) {
+  List *list = list_create();
+  list_emplace_element(list, 10, 1);
+  list_clear(list);
+  assert(list->head == NULL);
+  list_free(list);
+  return 0;
+}
+
+int check_list_is_empty(void) {
+  List *list = list_create();
+  assert(list_is_empty(list));
+  list_emplace_element(list, 10, 1);
+  assert(!list_is_empty(list));
+  list_free(list);
+  return 0;
+}
+
+int check_list_remove_element(void) {
+  List *list = list_create();        // []
+  list_emplace_element(list, 10, 1); // [10]
+  list_emplace_element(list, 20, 1); // [10, 20]
+  list_emplace_element(list, 30, 1); // [10, 30, 20]
+  list_emplace_element(list, 40, 1); // [10, 40, 30, 20]
+  list_emplace_element(list, 50, 1); // [10, 50, 40, 30, 20]
+  list_emplace_element(list, 42, 1); // [10, 42, 50, 40, 30, 20]
+  assert(list_length(list) == 6);
+  list_remove_element(list, 1); // [10, 50, 40, 30, 20]
+  assert(list_length(list) == 5);
+  assert(list_get_element(list, 1) == 50);
+  list_free(list);
+  return 0;
+}
+
+int check_list_pop_element(void) {
+  List *list = list_create();        // []
+  list_emplace_element(list, 10, 1); // [10]
+  list_emplace_element(list, 20, 1); // [10, 20]
+  list_emplace_element(list, 30, 1); // [10, 30, 20]
+  list_emplace_element(list, 40, 1); // [10, 40, 30, 20]
+  list_emplace_element(list, 50, 1); // [10, 50, 40, 30, 20]
+  list_emplace_element(list, 42, 1); // [10, 42, 50, 40, 30, 20]
+  assert(list_pop_element(list, 1) == 42);
+  assert(list_pop_element(list, 4) == 20);
+  list_free(list);
+  return 0;
+}
+
+int check_list_emplace_head(void) {
+  List *list = list_create();         // []
+  list_emplace_element(list, 100, 0); // [100]
+  list_emplace_element(list, 1, 0);   // [1, 100]
+  assert(list_get_element(list, 0) == 1);
+  list_free(list);
+  return 0;
+}*/
 
 int check_queue(void) {
   Queue *queue = queue_create();

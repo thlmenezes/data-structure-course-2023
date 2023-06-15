@@ -16,7 +16,7 @@ int queue_front(Queue *);
 int queue_back(Queue *);
 void queue_free(Queue *);
 // TODO1: implement string repr of array for printf
-// char *queue_to_s(Queue *);
-// Queue *queue_clone(Queue *);
-// void queue_fill(Queue *, int);
+ char *queue_to_s(Queue *);
+ Queue *queue_clone(Queue *);
+ void queue_fill(Queue *, int);
 #endif

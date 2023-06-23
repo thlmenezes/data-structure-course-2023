@@ -15,7 +15,7 @@ int stack_pop(Stack *);
 int stack_top(Stack *);
 void stack_free(Stack *);
 // TODO1: implement string repr of array for printf
-// char *stack_to_s(Stack *);
-// Stack *stack_clone(Stack *);
-// void stack_fill(Stack *, int);
+ char *stack_to_s(Stack *);
+ Stack *stack_clone(Stack *);
+ void stack_fill(Stack *, int);
 #endif

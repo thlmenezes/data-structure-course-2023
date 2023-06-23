@@ -21,8 +21,8 @@ int list_pop_element(List *list, int position);
 void list_remove_element(List *, int);
 int list_get_element(List *, int);
 void list_free(List *);
-// TODO1: implement string repr of array for printf
-// char *list_to_s(List *);
-// List *list_clone(List *);
-// void list_fill(List *, int);
+//TODO1: implement string repr of array for printf
+char *list_to_s(List *);
+List *list_clone(List *);
+void list_fill(List *, int);
 #endif
